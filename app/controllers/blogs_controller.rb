@@ -20,6 +20,7 @@ class BlogsController < ApplicationController
     render :new if @blog.invalid?
   end
   
+
   def new
     @blog = Blog.new
   end
