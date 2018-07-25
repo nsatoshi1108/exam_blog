@@ -1,18 +1,20 @@
 <h1>ブログ一覧</h1>
 <%= notice%>
-<table>
-  <tr>
-    <th>タイトル</th>
-    <th>内容</th>
-  </tr>
-  <% @blogs.each do |blog|%>
-    <tr>
-      <td><%= blog.name%></td>
-      <td><%= blog.content%></td>
-      <td><%= link_to '内容をみる',blog_path(blog.id)%></td>
-      <td><%= link_to '編集する',edit_blog_path(blog.id)%></td>
-      <td><%= link_to '削除する',blog_path(blog.id),method: :delete,data:{ confirm:'本当に削除しますか？'}%></td>
-    </tr>
-  <% end%>
-</table>
+<div class="container-fluid">
+  <div class=" blogs_panel row">
+    <% @blogs.each do |blog|%>
+    <div class="one_blog col-md-6">
+      <h1><%= blog.name%></h1>
+      <p><%= blog.content%></p>
+      <div class="blog_link">
+        <%= link_to '内容をみる',blog_path(blog.id),class: 'label label-default'%>
+        <%= link_to '編集する',edit_blog_path(blog.id),class: 'label label-success'%>
+        <%= link_to '削除する',blog_path(blog.id),method: :delete,data:{ confirm:'本当に削除しますか？'},class: 'label label-warning'%>
+      </div>
+    </div>
+    <% end%>
+  </div>
+</div>
+<div class="new_blog_link">
 <%= link_to 'ブログを作成する',new_blog_path%>
+</div>

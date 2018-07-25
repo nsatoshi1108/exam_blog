@@ -1,17 +1,19 @@
 <h1>ブログを編集する</h1>
-<%= form_with(model: @blog, local:true) do |form|%>
+<div class="blogs_panel">
+  <%= form_with(model: @blog, local:true) do |form|%>
 
-  <div id="blog_title">
-    <%= form.label :name%>
-    <%= form.text_field :name%>
-  </div>
-  
-  <div id="blog_title">
-    <%= form.label :content%>
-    <%= form.text_field :content%>
-  </div>
-  
-  <%= form.submit%><br>
-  <%= link_to 'ブログ一覧へ',blogs_path%>
-  
-<% end %>
+    <div id="blog_title">
+      <%= form.label :name%>
+      <%= form.text_field :name%>
+    </div>
+
+    <div id="blog_title">
+      <%= form.label :content%>
+      <%= form.text_field :content%>
+    </div>
+
+    <%= form.submit%><br>
+    <%= link_to 'ブログ一覧へ',blogs_path%>
+
+  <% end %>
+</div>

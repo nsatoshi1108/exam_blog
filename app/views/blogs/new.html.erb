@@ -1,28 +1,29 @@
 <h1>新規ブログを書き込む</h1>
-<%= form_with(model: @blog,url: confirm_blogs_path, local:true) do |form|%>
-  <% if @blog.errors.any?%>
-    <div id="error_explanation">
-      <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
-    
-    　<ul>
-    　 <% @blog.errors.full_messages.each do |msg|%>
-    　   <li><%= msg%></li>
-    　 <% end%>
-    　</ul>
-    　
+<div class="blogs_panel">
+  <%= form_with(model: @blog,url: confirm_blogs_path, local:true) do |form|%>
+    <% if @blog.errors.any?%>
+      <div id="error_explanation">
+        <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
+        <ul>
+          <% @blog.errors.full_messages.each do |msg|%>
+          <li><%= msg%></li>
+        <% end%>
+        </ul>
+        
+      </div>
+    <% end%>
+    <div id="blog_title">
+      <%= form.label :name%>
+      <%= form.text_field :name%>
     </div>
-  <% end%>
-  <div id="blog_title">
-    <%= form.label :name%>
-    <%= form.text_field :name%>
-  </div>
-  
-  <div id="blog_title">
-    <%= form.label :content%>
-    <%= form.text_field :content%>
-  </div>
-  
-  <%= form.submit%><br>
-  <%= link_to 'ブログ一覧へ',blogs_path%>
-  
-<% end %>
+
+    <div id="blog_title">
+      <%= form.label :content%>
+      <%= form.text_field :content%>
+    </div>
+
+    <%= form.submit%><br>
+    <%= link_to 'ブログ一覧へ',blogs_path%>
+
+  <% end %>
+</div>
