@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   resources :blogs do
     collection do
       post :confirm
@@ -7,4 +9,6 @@ Rails.application.routes.draw do
   end
 
   resources :users
+
+  resources :session,only: [:new, :create, :destroy]
 end
