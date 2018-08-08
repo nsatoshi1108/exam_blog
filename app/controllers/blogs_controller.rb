@@ -1,9 +1,14 @@
 class BlogsController < ApplicationController
 
   before_action :blog_id, only: [:show, :edit, :update, :destroy]
+  before_action :go_to_login, only: [:show, :edit, :update, :destroy]
 
   def index
-    @blogs = Blog.all
+    if logged_in?
+      @blogs = Blog.all
+    else
+      redirect_to new_session_path
+    end
   end
 
   def top
@@ -25,7 +30,11 @@ class BlogsController < ApplicationController
 
 
   def new
-    @blog = Blog.new
+    if logged_in?
+      @blog = Blog. new
+    else
+      redirect_to new_session_path
+    end
   end
 
   def show
