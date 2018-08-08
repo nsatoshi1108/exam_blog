@@ -35,6 +35,14 @@
         <% flash.each do |key, value|%>
           <p><%= content_tag(:div, value, class: "#{key}")%></p>
         <% end%>
+        <% if logged_in?%>
+          <h2><%= link_to "Profile", user_path(current_user.id) %></h2>
+          <h2><%= link_to "Logout", session_path(current_user.id), method: :delete %></h2>
+        <% else%>
+          <h2><%= link_to "Sign up", new_user_path %></h2>
+          <h2><%= link_to "Login", new_session_path %></h2>
+        <% end%>
+
         <%= yield %>
       </div>
       <footer>
