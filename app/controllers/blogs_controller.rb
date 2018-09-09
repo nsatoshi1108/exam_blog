@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
 
   before_action :blog_id, only: [:show, :edit, :update, :destroy]
-  before_action :go_to_login, only: [:show, :edit, :update, :destroy]
+  # before_action :go_to_login, only: [:show, :edit, :update, :destroy]
 
   def index
     if logged_in?
@@ -16,6 +16,8 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id
+
     if @blog.save
       redirect_to blogs_path, notice: 'ブログを作成しました。'
     else
@@ -25,6 +27,7 @@ class BlogsController < ApplicationController
 
   def confirm
     @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id
     render :new if @blog.invalid?
   end
 
@@ -38,6 +41,7 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
 
   def edit

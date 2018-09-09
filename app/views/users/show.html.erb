@@ -1,3 +1,10 @@
 <h1><%= @user.name%>のページ</h1>
 
 <p>メールアドレス：<%= @user.email%></p>
+
+<h2>登録しているお気に入りブログ一覧</h2>
+<% @favorite_blogs.each do |favorite|%>
+  <% blog = Blog.find(favorite.blog_id)%>
+  ブログタイトル：<%= blog.name%><br>
+  <%= link_to '内容をみる',blog_path(favorite.blog_id),class: 'label label-default'%><br>
+<%end%>

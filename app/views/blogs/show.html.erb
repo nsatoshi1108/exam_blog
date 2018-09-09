@@ -1,6 +1,14 @@
 <h1>ブログの内容</h1>
 <div class="blogs_panel">
+  <% unless @blog.user_id == current_user.id %>
+   <% if @favorite.present? %>
+   <%= link_to 'お気に入りを解除する',favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger'%>
+   <%else%>
+   <%= link_to 'お気に入りする',favorites_path(blog_id: @blog.id),method: :post, class: 'btn btn-primary'%>
+   <% end%>
+  <% end%>
   <p>ブログタイトル：<%= @blog.name%></p>
   <p>ブログ内容：<%= @blog.content%></p>
   <%= link_to 'ブログ一覧に戻る',blogs_path%>
+  <%= link_to 'マイページ',user_path(current_user.id)%>
 </div>
