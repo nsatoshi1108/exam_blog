@@ -6,5 +6,6 @@
 <% @favorite_blogs.each do |favorite|%>
   <% blog = Blog.find(favorite.blog_id)%>
   ブログタイトル：<%= blog.name%><br>
+  
   <%= link_to '内容をみる',blog_path(favorite.blog_id),class: 'label label-default'%><br>
 <%end%>
