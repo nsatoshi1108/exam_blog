@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
 
   before_action :blog_id, only: [:show, :edit, :update, :destroy]
-  # before_action :go_to_login, only: [:show, :edit, :update, :destroy]
+  before_action :operation_limits, only: [:edit, :update, :destroy]
 
   def index
     if logged_in?
@@ -45,6 +45,7 @@ class BlogsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
@@ -67,6 +68,12 @@ class BlogsController < ApplicationController
 
   def blog_id
     @blog = Blog.find(params[:id])
+  end
+
+  def operation_limits
+    unless current_user.id == @blog.user_id
+      redirect_to blogs_path
+    end
   end
 
 end
