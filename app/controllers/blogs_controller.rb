@@ -20,7 +20,7 @@ class BlogsController < ApplicationController
 
     if @blog.save
       BlogMailer.blog_mail(@blog).deliver
-      
+
       redirect_to blogs_path, notice: 'ブログを作成しました。'
     else
       render 'new'
@@ -64,6 +64,7 @@ class BlogsController < ApplicationController
   end
 
   private
+  
   def blog_params
     params.require(:blog).permit(:name,:content)
   end

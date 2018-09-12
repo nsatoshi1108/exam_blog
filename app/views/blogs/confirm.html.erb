@@ -1,4 +1,6 @@
+<div class="blogs_panel">
 <h1>以下の内容で送信しますか？</h1>
+
 <%= form_with(model: @blog,url: blogs_path,local: true) do |form|%>
 
   <%= form.hidden_field :name%>
@@ -8,5 +10,7 @@
   <p>内容:<%= @blog.content%></p>
 
   <%= form.submit '登録する'%>
-  
+
 <% end%>
+
+</div>
