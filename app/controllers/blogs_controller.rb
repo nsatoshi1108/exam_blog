@@ -64,9 +64,9 @@ class BlogsController < ApplicationController
   end
 
   private
-  
+
   def blog_params
-    params.require(:blog).permit(:name,:content)
+    params.require(:blog).permit(:name, :content, :image, :image_cache)
   end
 
   def blog_id

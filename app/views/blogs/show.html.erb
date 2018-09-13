@@ -6,9 +6,12 @@
    <%else%>
    <%= link_to 'お気に入りする',favorites_path(blog_id: @blog.id),method: :post, class: 'btn btn-primary'%>
    <% end%>
+   <br>
   <% end%>
-  <p>ブログタイトル：<%= @blog.name%></p>
-  <p>ブログ内容：<%= @blog.content%></p>
-  <%= link_to 'ブログ一覧に戻る',blogs_path%>
+  <p>ブログタイトル：<%= @blog.name%></p><br>
+  <p>ブログ内容：<%= @blog.content%></p><br>
+  <p>ブログ画像：<%= image_tag @blog.image%></p><br>
+
+  <%= link_to 'ブログ一覧に戻る',blogs_path%><br>
   <%= link_to 'マイページ',user_path(current_user.id)%>
 </div>
